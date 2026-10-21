@@ -125,7 +125,7 @@ if (build) {
   # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
 
-  rmarkdown::render("README.Rmd")
+  rmarkdown::render(input = "README.Rmd", output_file = "README.md")
 
   file.create("out/.nojekyll")
 }
