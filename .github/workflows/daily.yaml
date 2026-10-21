@@ -1,0 +1,42 @@
+name: daily
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6            # keep the versions your template generated
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        env:
+          GITHUB_PAT: ${{ secrets.PP2_PAT }}  # lets pak install the private pp2
+
+      - name: Run daily script
+        id: run
+        env:
+          FORCE_BUILD: ${{ github.event_name == 'workflow_dispatch' }}
+        run: Rscript scripts/run_daily.R
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "Daily update" || echo "No changes to commit"
+          git push
+
+      - name: Deploy to GitHub Pages
+        if: steps.run.outputs.build == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: out
+          single-commit: true

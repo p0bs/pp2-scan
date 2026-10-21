@@ -1,0 +1,7 @@
+Package: pp2scan
+Title: Project to scan Premier League results and project the final table this season
+Version: 0.0.1
+Imports: 
+    PremPredict2
+Remotes:  
+    p0bs/PremPredict2@v0.1.0
