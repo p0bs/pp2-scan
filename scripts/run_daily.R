@@ -13,3 +13,14 @@ writeLines(
   format(Sys.time(), tz = "UTC", usetz = TRUE),
   "data/last_checked.txt"
 )
+
+if (build) {
+  dir.create("out", showWarnings = FALSE)
+
+  # placeholders for your functions
+
+  # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
+  # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
+
+  file.create("out/.nojekyll")
+}
