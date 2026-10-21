@@ -79,7 +79,7 @@ if (build) {
 
   readr::write_csv(
     x = test_predictions,
-    file = "out/predictions",
+    file = "out/predictions.csv",
     append = FALSE
   )
 
