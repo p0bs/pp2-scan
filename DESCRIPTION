@@ -2,6 +2,7 @@ Package: pp2scan
 Title: Project to scan Premier League results and project the final table this season
 Version: 0.0.2
 Imports: 
+    carrier,
     ggplot2,
     htmlwidgets,
     PremPredict2
