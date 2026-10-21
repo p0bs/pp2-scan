@@ -5,6 +5,7 @@ Imports:
     carrier,
     ggplot2,
     htmlwidgets,
-    PremPredict2
+    PremPredict2,
+    svglite
 Remotes: 
     p0bs/PremPredict2@v0.1.1
