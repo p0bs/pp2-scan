@@ -116,14 +116,16 @@ if (build) {
     teams = test_teams
   )
 
-  output_chart <- generate_chart_dotty(data_dotty = data_detail)
+  readr::write_csv(x = data_detail, file = "data/data_detail.csv")
 
-  ggplot2::ggsave(filename = "out/plot_dotty.svg", plot = output_chart)
+  # output_chart <- generate_chart_dotty(data_dotty = data_detail)
+
+  # ggplot2::ggsave(filename = "out/plot_dotty.svg", plot = output_chart)
 
   # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
 
-  file.create("out/.nojekyll")
-
   rmarkdown::render("README.Rmd")
+
+  file.create("out/.nojekyll")
 }
