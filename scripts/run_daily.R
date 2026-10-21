@@ -16,7 +16,7 @@ writeLines(
 
 if (build) {
   library(PremPredict2)
-  n_sims <- 10000
+  n_sims <- 50000
   test_year <- 2027L
 
   test_teams <- get_teams(year_season_end = test_year)
@@ -77,13 +77,47 @@ if (build) {
     results_thin = test_results_BT2
   )
 
-  readr::write_csv(
-    x = test_predictions,
-    file = "data/predictions.csv",
-    append = FALSE
+  # readr::write_csv(
+  #   x = test_predictions,
+  #   file = "data/predictions.csv",
+  #   append = FALSE
+  # )
+
+  # Simulate entire season ----
+  test_simulations <- get_simulations(
+    predictions = test_predictions,
+    n_sims = n_sims,
+    current_points = test_table_current$Points,
+    current_gd = test_table_current$GD
   )
 
-  # placeholders for your functions
+  # Importantance of next game ----
+  test_games_next <- calc_games_next(
+    teams = test_teams,
+    predictions = test_predictions
+  )
+
+  test_scenarios <- get_scenarios(
+    teams = test_teams,
+    games_next = test_games_next,
+    table_current = test_table_current,
+    results_filtered = test_results_filtered,
+    value_yearEnd = test_year,
+    n_sims = n_sims,
+    n_daemons = 3L
+  )
+
+  data_detail <- get_data_dotty(
+    simulations = test_simulations,
+    scenarios = test_scenarios,
+    games_next = test_games_next,
+    n_sims = n_sims,
+    teams = test_teams
+  )
+
+  output_chart <- generate_chart_dotty(data_dotty = data_detail)
+
+  ggplot2::ggsave(filename = "plot_dotty.svg", plot = data_detail)
 
   # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
