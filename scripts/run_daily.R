@@ -117,7 +117,7 @@ if (build) {
 
   output_chart <- generate_chart_dotty(data_dotty = data_detail)
 
-  ggplot2::ggsave(filename = "plot_dotty.svg", plot = data_detail)
+  ggplot2::ggsave(filename = "data/plot_dotty.svg", plot = output_chart)
 
   # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
