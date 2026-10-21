@@ -15,6 +15,7 @@ writeLines(
 )
 
 if (build) {
+  dir.create("out", showWarnings = FALSE)
   library(PremPredict2)
   n_sims <- 50000
   test_year <- 2027L
