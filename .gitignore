@@ -49,3 +49,5 @@ po/*~
 # RStudio Connect and other folders
 rsconnect/
 out/
+
+/.quarto/
