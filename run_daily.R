@@ -125,7 +125,21 @@ if (build) {
   # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
 
-  rmarkdown::render("README.Rmd")
+  # README.md for the repo's main page (also writes README_files/ if there are figures)
+  rmarkdown::render(
+    "README.Rmd",
+    output_format = "github_document",
+    quiet = TRUE
+  )
+
+  # Same content as a web page for github.io
+  rmarkdown::render(
+    "README.md",
+    output_format = "html_document",
+    output_file = "index.html",
+    output_dir = "out",
+    quiet = TRUE
+  )
 
   file.create("out/.nojekyll")
 }
