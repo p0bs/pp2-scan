@@ -118,11 +118,9 @@ if (build) {
 
   readr::write_csv(x = data_detail, file = "data/data_detail.csv")
 
-  # output_chart <- generate_chart_dotty(data_dotty = data_detail)
+  output_echart <- PremPredict2::generate_echart_dotty(data_dotty = data_detail)
 
-  # ggplot2::ggsave(filename = "out/plot_dotty.svg", plot = output_chart)
-
-  # htmlwidgets::saveWidget(pp2::your_chart(res), "out/chart.html", selfcontained = TRUE)
+  htmlwidgets::saveWidget(output_echart, "out/chart.html", selfcontained = TRUE)
   # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
 
   # README.md for the repo's main page (also writes README_files/ if there are figures)
