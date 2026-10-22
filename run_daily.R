@@ -141,3 +141,13 @@ if (build) {
 
   file.create("out/.nojekyll")
 }
+
+# Tell the workflow whether to deploy (just prints when run locally)
+cat(
+  "build=",
+  tolower(build),
+  "\n",
+  sep = "",
+  file = Sys.getenv("GITHUB_OUTPUT"),
+  append = TRUE
+)
