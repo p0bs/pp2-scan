@@ -3,7 +3,7 @@
 
 ## Predicting this season’s Premier League
 
-    ## Rows: 40774 Columns: 12
+    ## Rows: 40787 Columns: 12
     ## ── Column specification ────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr (8): location, outcome, team_mid, opponent_mid, desc_position, desc_loca...
@@ -12,7 +12,7 @@
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
-    ## Warning: Removed 939 rows containing missing values or values outside the scale range
+    ## Warning: Removed 933 rows containing missing values or values outside the scale range
     ## (`geom_point()`).
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
