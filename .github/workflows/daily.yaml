@@ -24,7 +24,7 @@ jobs:
       - name: Run daily script
         id: run
         env:
-          FORCE_BUILD: ${{ github.event_name == 'workflow_dispatch' }}
+          FORCE_BUILD: ${{ github.event_name != 'schedule' }}
         run: Rscript run_daily.R
 
       - name: Commit results
