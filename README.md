@@ -9,7 +9,7 @@ being in the Champions League next year or being relegated.
 When doing so, we also consider the impact of each team’s next game on
 these chances. Specifically, we create:
 
-- An [interactive table](https://p0bs.github.io/pp2-scan/etable.html)
+- An [interactive table](https://p0bs.github.io/pp2-scan/table.html)
   that shows these chances for each team in each scenario (of whether
   they win, draw or lose their next game)
 
