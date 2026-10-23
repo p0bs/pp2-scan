@@ -121,7 +121,7 @@ if (build) {
   output_chart <- generate_chart_dotty(data_dotty = data_detail)
 
   ggplot2::ggsave(
-    plot = output_echart,
+    plot = output_chart,
     filename = "out/chart.svg"
   )
 
