@@ -18,7 +18,7 @@ In the repo, we calculate each team's chances of winning the title, being in the
 
 When doing so, we also consider the impact of each team's next game on these chances. Specifically, we create:
 
- - An [interactive table](https://p0bs.github.io/pp2-scan/etable.html) that shows these chances for each team in each scenario (of whether they win, draw or lose their next game)
+ - An [interactive table](https://p0bs.github.io/pp2-scan/table.html) that shows these chances for each team in each scenario (of whether they win, draw or lose their next game)
 
  - A [static plot](https://p0bs.github.io/pp2-scan/chart.svg)
 
