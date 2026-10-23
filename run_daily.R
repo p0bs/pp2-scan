@@ -135,7 +135,7 @@ if (build) {
 
   # Table ----
 
-  data_table <- get_data_table(
+  data_table <- PremPredict2::get_data_table(
     simulations = test_simulations,
     scenarios = test_scenarios,
     games_next = test_games_next,
