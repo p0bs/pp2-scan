@@ -14,4 +14,15 @@ knitr::opts_chunk$set(
 
 ## Predicting this season's Premier League
 
-TBC
+In the repo, we calculate each team's chances of winning the title, being in the Champions League next year or being relegated.
+
+When doing so, we also consider the impact of each team's next game on these chances. Specifically, we create:
+
+ - An [interactive table](https://p0bs.github.io/pp2-scan/etable.html) that shows these chances for each team in each scenario (of whether they win, draw or lose their next game)
+
+ - A [static plot](https://p0bs.github.io/pp2-scan/chart.svg)
+
+ - An [interactive version](https://p0bs.github.io/pp2-scan/echart.html) of the same plot, where you can hover over the points to get more information
+
+ All this will soon form part of a dedicated website that will include far more details. Stay tuned!
+ 
