@@ -17,7 +17,7 @@ writeLines(
 if (build) {
   dir.create("out", showWarnings = FALSE)
   library(PremPredict2)
-  n_sims <- 50000
+  n_sims <- 100000
   test_year <- 2027L
 
   test_teams <- get_teams(year_season_end = test_year)
@@ -108,6 +108,8 @@ if (build) {
     n_daemons = 3L
   )
 
+  # Charts ----
+
   data_detail <- get_data_dotty(
     simulations = test_simulations,
     scenarios = test_scenarios,
@@ -116,12 +118,39 @@ if (build) {
     teams = test_teams
   )
 
-  readr::write_csv(x = data_detail, file = "data/data_detail.csv")
+  output_chart <- generate_chart_dotty(data_dotty = data_detail)
 
-  output_echart <- PremPredict2::generate_echart_dotty(data_dotty = data_detail)
+  ggplot2::ggsave(
+    plot = output_echart,
+    filename = "out/chart.svg"
+  )
 
-  htmlwidgets::saveWidget(output_echart, "out/chart.html", selfcontained = TRUE)
-  # htmlwidgets::saveWidget(pp2::your_table(res), "out/table.html", selfcontained = TRUE)
+  output_echart <- generate_echart_dotty(data_dotty = data_detail)
+
+  htmlwidgets::saveWidget(
+    output_echart,
+    "out/echart.html",
+    selfcontained = TRUE
+  )
+
+  # Table ----
+
+  data_table <- get_data_table(
+    simulations = test_simulations,
+    scenarios = test_scenarios,
+    games_next = test_games_next,
+    teams = test_teams
+  )
+
+  output_table <- generate_etable(data_table = data_table)
+
+  htmlwidgets::saveWidget(
+    output_table,
+    "out/table.html",
+    selfcontained = TRUE
+  )
+
+  # Finalise ----
 
   # README.md for the repo's main page (also writes README_files/ if there are figures)
   rmarkdown::render(
