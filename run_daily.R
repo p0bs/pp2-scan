@@ -23,17 +23,6 @@ if (build) {
   test_teams <- get_teams(year_season_end = test_year)
 
   # Get data ----
-  if (!is_file_unchanged) {
-    results_latest_data <- readr::read_csv(
-      "https://www.football-data.co.uk/mmz4281/2627/E0.csv"
-    )
-
-    readr::write_csv(
-      x = results_latest_data,
-      file = "data/results_latest.csv"
-    )
-  }
-
   test_schedule <- get_openData_schedule(
     value_path = "https://raw.githubusercontent.com/openfootball/football.json/refs/heads/master/2026-27/en.1.json",
     table_teams = test_teams,
@@ -180,6 +169,19 @@ if (build) {
   )
 
   file.create("out/.nojekyll")
+
+  # Add new csv file if it is changed
+  # Do this at the end of this long if statement in case anything else breaks
+  if (!is_file_unchanged) {
+    results_latest_data <- readr::read_csv(
+      "https://www.football-data.co.uk/mmz4281/2627/E0.csv"
+    )
+
+    readr::write_csv(
+      x = results_latest_data,
+      file = "data/results_latest.csv"
+    )
+  }
 }
 
 # Tell the workflow whether to deploy (just prints when run locally)
