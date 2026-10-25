@@ -1,8 +1,7 @@
 name: daily
 
 on:
-  schedule:
-    - cron: "25 0-23/6 * * *"
+  schedule: [{cron: '25 0-23/6 * 1-5,9-12 *'}]
   workflow_dispatch:
 
 permissions:
