@@ -150,6 +150,30 @@ if (build) {
     selfcontained = TRUE
   )
 
+  reactable_to_png <- function(
+    widget,
+    png_file,
+    zoom = 3,
+    width = 1200,
+    delay = 1
+  ) {
+    html_temp <- tempfile(fileext = ".html")
+
+    htmlwidgets::saveWidget(widget, html_temp, selfcontained = TRUE)
+
+    webshot2::webshot(
+      html_temp,
+      png_file,
+      selector = ".Reactable", # crop tightly to the table
+      vwidth = width,
+      zoom = zoom, # 2 = retina, 3 = very crisp
+      delay = delay # let React finish rendering
+    )
+    invisible(png_file)
+  }
+
+  reactable_to_png(output_table, "out/table.png")
+
   coefficients_table <- PremPredict2::print_model_coefficients(
     object_model = test_model,
     teams = test_teams
