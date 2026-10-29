@@ -133,7 +133,7 @@ if (build) {
     selfcontained = TRUE
   )
 
-  # Table ----
+  # Tables ----
 
   data_table <- PremPredict2::get_data_table(
     simulations = test_simulations,
@@ -147,6 +147,17 @@ if (build) {
   htmlwidgets::saveWidget(
     output_table,
     "out/table.html",
+    selfcontained = TRUE
+  )
+
+  coefficients_table <- PremPredict2::print_model_coefficients(
+    object_model = test_model,
+    teams = test_teams
+  )
+
+  htmlwidgets::saveWidget(
+    coefficients_table,
+    "out/table_coefficients.html",
     selfcontained = TRUE
   )
 
