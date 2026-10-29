@@ -9,4 +9,4 @@ Imports:
     rmarkdown,
     svglite
 Remotes: 
-    p0bs/PremPredict2@v0.1.4
+    p0bs/PremPredict2@v0.1.5
