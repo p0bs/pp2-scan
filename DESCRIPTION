@@ -10,4 +10,4 @@ Imports:
     svglite,
     webshot2
 Remotes: 
-    p0bs/PremPredict2@v0.1.5
+    p0bs/PremPredict2@v0.1.6
